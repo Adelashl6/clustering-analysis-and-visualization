@@ -1,2 +1,2 @@
 # clustering-analysis-and-visualization
-HDBSCAN for clustering Bert-based blog embeddings and extract topic words as well as head actors cluster by cluster
+The code is implemented to cluster Bert-based blog embeddings using HDBSCAN and interprate each cluster by extracting topic words as well as head actors.
