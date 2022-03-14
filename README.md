@@ -8,15 +8,15 @@ We run the clustering method HDBSCAN or KMeans on bert-based blog embeddings and
 ## Analysis
 ### topic words
 Extract topic words for each cluster by LDA. \
-```python visualize.py --data_path PATH_TO_EMBBEDING_FILE --result_path PATH_TO_SAVE_RESULT --n_component EMBEDDING_DIM_FOR_T-SNE```
+```python topic_words.py --blog_path PATH_TO_BLOG_TEXT --cluster_path PATH_TO_CLUSTER_LABELS --save_path PATH_SAVE_FILE```
 
 ### head actors
 Given an pre-coded actor lists, obtain key actors with most frequently occurrence for each cluster. \
-```python visualize.py --data_path PATH_TO_EMBBEDING_FILE --result_path PATH_TO_SAVE_RESULT --n_component EMBEDDING_DIM_FOR_T-SNE```
+```python actor_analysis.py --data_path PATH_TO_EMBBEDING_FILE --result_path PATH_TO_SAVE_RESULT --n_component EMBEDDING_DIM_FOR_T-SNE```
 
 
 ### discrminative words
 Find discriminative words for each cluster by logistic regression. \
-```python visualize.py --data_path PATH_TO_EMBBEDING_FILE --result_path PATH_TO_SAVE_RESULT --n_component EMBEDDING_DIM_FOR_T-SNE```
+```python interpretable_kmeans.py --data_path PATH_TO_BLOG_TEXT --label_path PATH_TO_KMEANS_LABELS```
 
    
