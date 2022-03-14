@@ -28,7 +28,7 @@ def load(args):
     ax.set_title("Ukraine News Frame Distribution", fontsize="xx-large", y=1.05)
     ax.set_xlabel("Frames", fontsize="x-large")
     ax.set_ylabel("Counts", fontsize="x-large")
-    plt.savefig('./ukraine_news/distribution/ukraine_news_frame_distribution.png')
+    plt.savefig('./news/distribution/frame_distribution.png')
     plt.show()
 
     # plot distribution of predicted frame clusters
@@ -74,7 +74,7 @@ def preprocess(data):
                      x="Token", y="Frequency")
     ax.set_title("Total Vocab Frequency", fontsize='xx-large', y=1.05)
     plt.show()
-    data.to_csv('./ukraine_news/token.csv', index=False)
+    data.to_csv('./news/token.csv', index=False)
     return data, all_vocab
 
 
