@@ -64,23 +64,23 @@ def main(args):
     for i in range(N):
         id_list = result[result['tsne_clusters'] == i]['id'].values.tolist()
         arr = populate_actors(id_list, docs, actor_list, ukraine_list, i)
-        arr.to_csv(os.path.join(args.save_path, 'ukraine_propaganda_{}.csv'.format(str(i))), index=False)
+        arr.to_csv(os.path.join(args.save_path, 'propaganda_{}.csv'.format(str(i))), index=False)
     print('total time taken', time.time() - start_time)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='apply t-SNE for dimension reduction and '
                                                  'visualize the data by K-means clustering')
-    parser.add_argument('--actor_path', type=str, default='./ukraine_blog_new/head_actor/coded_actor_list.json',
+    parser.add_argument('--actor_path', type=str, default='./blog_new/head_actor/coded_actor_list.json',
                         help='path to cluster result')
     parser.add_argument('--ukraine_path', type=str,
-                        default='./ukraine_blog_new/head_actor/mix_set_camp_coded_entities_includes_additional_set_v4.csv',
+                        default='./blog_new/head_actor/mix_set_camp_coded_entities_includes_additional_set_v4.csv',
                         help='path to blog texts')
     parser.add_argument('--cluster_path', type=str,
-                        default='./ukraine_blog_new/result/tsne_propaganda.csv',
+                        default='./blog_new/result/tsne_propaganda.csv',
                         help='path to cluster result')
-    parser.add_argument('--blog_path', type=str, default='./ukraine_blog_new/Propaganda_head_blogs.csv', help='path to blog texts')
-    parser.add_argument('--save_path', type=str, default='./ukraine_blog_new/analysis/head_actors')
+    parser.add_argument('--blog_path', type=str, default='./blog_new/Propaganda_head_blogs.csv', help='path to blog texts')
+    parser.add_argument('--save_path', type=str, default='./blog_new/analysis/head_actors')
     args = parser.parse_args()
 
     main(args)
