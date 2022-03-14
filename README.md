@@ -12,7 +12,7 @@ Extract topic words for each cluster by LDA. \
 
 ### head actors
 Given an pre-coded actor lists, obtain key actors with most frequently occurrence for each cluster. \
-```python actor_analysis.py --actor_path PATH_TO_NER --coded_actor_path PATH_TO_ACTOR_LIST --blog_path PATH_TO_BLOG_TEXT --cluster_path PATH_TO_CLUSTER_LABELS \ 
+```python actor_analysis.py --actor_path PATH_TO_NER --coded_actor_path PATH_TO_ACTOR_LIST --blog_path PATH_TO_BLOG_TEXT --cluster_path PATH_TO_CLUSTER_LABELS
 --save_path PATH_TO_SAVE_FILE```
 
 
