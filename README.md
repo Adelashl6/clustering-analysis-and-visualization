@@ -8,7 +8,7 @@ We run the clustering method HDBSCAN or KMeans on bert-based blog embeddings and
 ## Analysis
 ### topic words
 Extract topic words for each cluster by LDA. \
-```python topic_words.py --blog_path PATH_TO_BLOG_TEXT --cluster_path PATH_TO_CLUSTER_LABELS --save_path PATH_SAVE_FILE```
+```python topic_words.py --blog_path PATH_TO_BLOG_TEXT --cluster_path PATH_TO_CLUSTER_LABELS --save_path PATH_TO_SAVE_FILE```
 
 ### head actors
 Given an pre-coded actor lists, obtain key actors with most frequently occurrence for each cluster. \
