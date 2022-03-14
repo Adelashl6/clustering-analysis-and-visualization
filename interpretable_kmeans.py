@@ -96,9 +96,9 @@ def get_important_feature(cv, matrix, labels):
     plt.title(f'Highest Weight Features in Cluster 4', fontsize='xx-large')
     plt.xlabel('Feature', fontsize=18)
     plt.ylabel('Weight', fontsize=18)
-    plt.savefig('./ukraine_news/cluster_4.png')
+    plt.savefig('./news/cluster.png')
     plt.show()
-    df_feature_weight.to_csv('./ukraine_news/cluster_4.csv', index=0)
+    df_feature_weight.to_csv('./news/cluster.csv', index=0)
 
 def main(args):
     data, labels = load(args)
