@@ -123,8 +123,8 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='apply t-SNE for dimension reduction and '
                                                  'visualize the data by K-means clustering')
-    parser.add_argument('--data_path', type=str, default='./ukraine_blog_new/Disinfo_head_blogs_emb.pkl')
-    parser.add_argument('--result_path', type=str, default='./ukraine_blog_new/result1')
+    parser.add_argument('--data_path', type=str, default='./blog_new/Disinfo_head_blogs_emb.pkl')
+    parser.add_argument('--result_path', type=str, default='./blog_new/result1')
     parser.add_argument('--n_component', type=int, default=2, help='number of embedded dimensions using T-SNE')
 
     args = parser.parse_args()
