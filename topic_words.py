@@ -95,11 +95,11 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='apply t-SNE for dimension reduction and '
                                                  'visualize the data by K-means clustering')
-    parser.add_argument('--cluster_path', type=str, default='./ukraine_blog_new/result/tsne_propaganda.csv',
+    parser.add_argument('--cluster_path', type=str, default='./blog_new/result/tsne_propaganda.csv',
                         help='path to clsutert result')
-    parser.add_argument('--blog_path', type=str, default='./ukraine_blog_new/Propaganda_head_blogs.csv',
+    parser.add_argument('--blog_path', type=str, default='./blog_new/Propaganda_head_blogs.csv',
                         help='path to blog texts')
-    parser.add_argument('--save_path',  type=str, default='./ukraine_blog_new/analysis/topic_words/keywords_propaganda.csv',
+    parser.add_argument('--save_path',  type=str, default='./blog_new/analysis/topic_words/keywords_propaganda.csv',
                         help='path to save topic words')
 
     args = parser.parse_args()
