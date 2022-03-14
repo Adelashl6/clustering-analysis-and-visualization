@@ -9,7 +9,7 @@ import argparse
 import os
 
 
-def populate_actors(id_list, docs, actor_list, ukraine_list, cluster):
+def populate_actors(id_list, docs, actor_list, interest_list, cluster):
     current_time= time.time()
     start=current_time
 
@@ -19,7 +19,7 @@ def populate_actors(id_list, docs, actor_list, ukraine_list, cluster):
     ruler.add_patterns(actor_list['actor_list'])
     nlp.add_pipe(ruler, before='ner')
 
-    ukraine = {}
+    interest = {}
 
     for id in id_list:
         text = docs[docs['id'].astype(int) == id]['post_clean'].values[0]
@@ -28,17 +28,17 @@ def populate_actors(id_list, docs, actor_list, ukraine_list, cluster):
         for ent in doc.ents:
             if (ent.label_ in include_ents):
                 key = ent.text.lower()
-                exists = ukraine_list[ukraine_list['Named_Entity'] == key]
+                exists = interest_list[interest_list['Named_Entity'] == key]
                 # print("exists::",exists.shape," ent.text.lower()::",ent.text.lower())
                 if exists.shape[0] > 0:
-                    if key in ukraine.keys():
-                        ukraine.update({key: ukraine[key] + 1})
+                    if key in interest.keys():
+                        ukraine.update({key: interest[key] + 1})
                     else:
                         ukraine[key] = 1
     arr = []
-    if len(ukraine) > 0:
-        for actor in ukraine:
-            arr.append({'actor': actor, 'freq': ukraine[actor]})
+    if len(interest) > 0:
+        for actor in interest:
+            arr.append({'actor': actor, 'freq': interest[actor]})
 
     arr = pd.DataFrame(arr).sort_values(['freq'], ascending=False)
     print('time taken for cluster %d: %f ' %(cluster, time.time() - start))
@@ -51,7 +51,7 @@ def main(args):
     print('EMFD Start time:', start_time)
 
     actor_list = json.load(open(args.actor_path, 'r'))
-    ukraine_list = pd.read_csv(args.ukraine_path)
+    interest_list = pd.read_csv(args.coded_actor_path)
 
 
     current_time = time.time()
@@ -63,7 +63,7 @@ def main(args):
     N = result['tsne_clusters'].values.max()
     for i in range(N):
         id_list = result[result['tsne_clusters'] == i]['id'].values.tolist()
-        arr = populate_actors(id_list, docs, actor_list, ukraine_list, i)
+        arr = populate_actors(id_list, docs, actor_list, interest_list, i)
         arr.to_csv(os.path.join(args.save_path, 'propaganda_{}.csv'.format(str(i))), index=False)
     print('total time taken', time.time() - start_time)
 
@@ -73,7 +73,7 @@ if __name__ == '__main__':
                                                  'visualize the data by K-means clustering')
     parser.add_argument('--actor_path', type=str, default='./blog_new/head_actor/coded_actor_list.json',
                         help='path to cluster result')
-    parser.add_argument('--ukraine_path', type=str,
+    parser.add_argument('--coded_actor_path', type=str,
                         default='./blog_new/head_actor/mix_set_camp_coded_entities_includes_additional_set_v4.csv',
                         help='path to blog texts')
     parser.add_argument('--cluster_path', type=str,
